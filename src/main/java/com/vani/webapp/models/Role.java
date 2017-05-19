@@ -17,6 +17,7 @@ import java.util.Set;
 public class Role extends SuperModelClass implements Serializable {
 
     private String roleName;
+    @OneToMany(mappedBy = "role")
     private Set<User> users = new HashSet<>();
 
 
@@ -29,7 +30,6 @@ public class Role extends SuperModelClass implements Serializable {
         this.roleName = roleName;
     }
 
-    @OneToMany(mappedBy = "role")
     public Set<User> getUsers() {
         return users;
     }

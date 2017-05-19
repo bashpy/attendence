@@ -1,9 +1,6 @@
 package com.vani.webapp.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,22 +13,15 @@ import java.util.Set;
 @Table(name = "school")
 public class School extends SuperModelClass implements Serializable{
 
+    @Column(name = "school_name",nullable = false,length = 300)
     private String schoolName;
+    @Column(name = "address")
     private String address;
     private String phone;
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "school")
     private Set<Class> classes = new HashSet<>();
 
 
-    @OneToMany(mappedBy = "school")
-    public Set<Class> getClasses() {
-        return classes;
-    }
-
-    public void setClasses(Set<Class> classes) {
-        this.classes = classes;
-    }
-
-    @Column(name = "school_name",nullable = false,length = 300)
     public String getSchoolName() {
         return schoolName;
     }
@@ -40,7 +30,6 @@ public class School extends SuperModelClass implements Serializable{
         this.schoolName = schoolName;
     }
 
-    @Column(name = "address")
     public String getAddress() {
         return address;
     }
@@ -57,4 +46,13 @@ public class School extends SuperModelClass implements Serializable{
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public Set<Class> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Set<Class> classes) {
+        this.classes = classes;
+    }
+
 }

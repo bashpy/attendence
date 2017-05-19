@@ -16,6 +16,7 @@ public class Division extends SuperModelClass implements Serializable {
     private String divisionName;
     private User classTeacher;
     private Class parentClass;
+    @OneToMany(mappedBy = "division")
     private Set<Attendance> attendances = new HashSet<>();
 
    @Column(name = "division")
@@ -45,7 +46,6 @@ public class Division extends SuperModelClass implements Serializable {
         this.parentClass = parentClass;
     }
 
-    @OneToMany(mappedBy = "division")
     public Set<Attendance> getAttendances() {
         return attendances;
     }
