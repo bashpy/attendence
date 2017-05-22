@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="jovin"/>
+    <meta name="ctx" th:content="${#httpServletRequest.getContextPath()}"/>
+    <link th:href="@{/resources/css/google.css}" href="/resources/css/google.css" rel="stylesheet"/>
+
+    <link th:href="@{/resources/css/bootstrap.css}" href="/resources/css/bootstrap.css" rel="stylesheet"/>
+    <link th:href="@{/resources/css/home-page.css}" href="/resources/css/home-page.css" rel="stylesheet"/>
+    <link th:href="@{/resources/css/animate.css}" href="/resources/css/animate.css" rel="stylesheet"/>
+    <link th:href="@{/resources/css/magnific-popup.css}" href="/resources/css/magnific-popup.css" rel="stylesheet"/>
+    <link th:href="@{/resources/css/font-icons.css}" href="/resources/css/font-icons.css" rel="stylesheet"/>
+    <link th:href="@{/resources/css/responsive.css}" href="/resources/css/responsive.css" rel="stylesheet"/>
+    <link th:href="@{/resources/css/material.css}" href="/resources/css/material.css" rel="stylesheet"/>
+    <link th:href="@{/resources/css/cards.css}" href="/resources/css/cards.css" rel="stylesheet"/>
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link th:href="@{/resources/css/jquery-confirm.css}" href="/resources/css/jquery-confirm.css" rel="stylesheet"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--[if lt IE 9]>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+
+    <!-- External JavaScripts
+    ============================================= -->
+
+    <script th:src="@{/resources/js/jquery.js} " src="/resources/js/jquery.js"></script>
+    <script th:src="@{/resources/js/plugins.js} " src="/resources/js/plugins.js"></script>
+
+
+    <!-- Document Title
+    ============================================= -->
+    <title></title>
+</head>
+
+<body class="stretched">
+
+<!-- Document Wrapper
+============================================= -->
+<div id="wrapper" class="clearfix">
+
+    <!-- Header
+    ============================================= -->
+    <div th:include="wireframe :: topNavBar"></div>
+
+    <script>
+
+        $(document).keyup(function (e) {
+            if (e.which == 13) {
+
+                console.log("Enter pressed")
+                window.location.replace(ctx + "/app/askQuestion/?" + $("#question").val());
+            }
+        });
+
+    </script>
+
+    <section id="slider" class="slider-parallax swiper_wrapper full-screen clearfix">
+
+        <div class="swiper-container swiper-parent">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide dark" style="background-image: url('/web/resources/img/videos/explore.jpg');">
+                    <div class="container clearfix">
+                        <div class="slider-caption slider-caption-center">
+
+                            <div class="col_full nobottommargin">
+                                <h3 class="cd-headline rotate-1" style="text-align: center;">
+                                    <span style="color:#fff !important;">I would like to ask about</span>
+                                      <span style="color:#fff !important;text-align: center !important;"
+                                            class="cd-words-wrapper">
+			<b class="is-visible">Criminal Law</b>
+			<b>Property Law</b>
+			<b>Business Law</b>
+		</span>
+                                </h3>
+                                <form id="register-form" name="register-form" class="nobottommargin" action="#"
+                                      method="post">
+                                    <div class="col_full">
+                                        <div class="input-group">
+                                            <input id="question" style="background-color:#fff;opacity:0.9;color:#000;"
+                                                   class="required form-control" cols="30" name="question"
+                                                   aria-required="true">
+                                            </input>
+                                            <span id="askButton"
+                                                  class="input-group-addon btn btn-ask bmd-ripple btn-lg">Ask</span>
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+            jQuery(document).ready(function ($) {
+                var swiperSlider = new Swiper('.swiper-parent', {
+                    paginationClickable: false,
+                    slidesPerView: 1,
+                    grabCursor: true,
+                    onSwiperCreated: function (swiper) {
+                        $('[data-caption-animate]').each(function () {
+                            var $toAnimateElement = $(this);
+                            var toAnimateDelay = $(this).attr('data-caption-delay');
+                            var toAnimateDelayTime = 0;
+                            if (toAnimateDelay) {
+                                toAnimateDelayTime = Number(toAnimateDelay) + 750;
+                            } else {
+                                toAnimateDelayTime = 750;
+                            }
+                            if (!$toAnimateElement.hasClass('animated')) {
+                                $toAnimateElement.addClass('not-animated');
+                                var elementAnimation = $toAnimateElement.attr('data-caption-animate');
+                                setTimeout(function () {
+                                    $toAnimateElement.removeClass('not-animated').addClass(elementAnimation + ' animated');
+                                }, toAnimateDelayTime);
+                            }
+                        });
+                        SEMICOLON.slider.swiperSliderMenu();
+                    },
+                    onSlideChangeStart: function (swiper) {
+                        $('#slide-number-current').html(swiper.activeIndex + 1);
+                        $('[data-caption-animate]').each(function () {
+                            var $toAnimateElement = $(this);
+                            var elementAnimation = $toAnimateElement.attr('data-caption-animate');
+                            $toAnimateElement.removeClass('animated').removeClass(elementAnimation).addClass('not-animated');
+                        });
+                        SEMICOLON.slider.swiperSliderMenu();
+                    },
+                    onSlideChangeEnd: function (swiper) {
+                        $('#slider .swiper-slide').each(function () {
+                            if ($(this).find('video').length > 0) {
+                                $(this).find('video').get(0).pause();
+                            }
+                        });
+                        $('#slider .swiper-slide:not(".swiper-slide-active")').each(function () {
+                            if ($(this).find('video').length > 0) {
+                                if ($(this).find('video').get(0).currentTime != 0) $(this).find('video').get(0).currentTime = 0;
+                            }
+                        });
+                        if ($('#slider .swiper-slide.swiper-slide-active').find('video').length > 0) {
+                            $('#slider .swiper-slide.swiper-slide-active').find('video').get(0).play();
+                        }
+
+                        $('#slider .swiper-slide.swiper-slide-active [data-caption-animate]').each(function () {
+                            var $toAnimateElement = $(this);
+                            var toAnimateDelay = $(this).attr('data-caption-delay');
+                            var toAnimateDelayTime = 0;
+                            if (toAnimateDelay) {
+                                toAnimateDelayTime = Number(toAnimateDelay) + 300;
+                            } else {
+                                toAnimateDelayTime = 300;
+                            }
+                            if (!$toAnimateElement.hasClass('animated')) {
+                                $toAnimateElement.addClass('not-animated');
+                                var elementAnimation = $toAnimateElement.attr('data-caption-animate');
+                                setTimeout(function () {
+                                    $toAnimateElement.removeClass('not-animated').addClass(elementAnimation + ' animated');
+                                }, toAnimateDelayTime);
+                            }
+                        });
+                    }
+                });
+
+                $('#slider-arrow-left').on('click', function (e) {
+                    e.preventDefault();
+                    swiperSlider.swipePrev();
+                });
+
+                $('#slider-arrow-right').on('click', function (e) {
+                    e.preventDefault();
+                    swiperSlider.swipeNext();
+                });
+
+                $('#slide-number-current').html(swiperSlider.activeIndex + 1);
+                $('#slide-number-total').html(swiperSlider.slides.length);
+            });
+        </script>
+
+    </section>
+
+    <!-- Content
+    ============================================= -->
+    <section id="content">
+
+        <div class="content-wrap">
+
+            <div class="container clearfix">
+
+                <div class="heading-block center nobottomborder">
+                    <h1>Your one stop destination for legal issues</h1>
+                    <span>Ask your legal clarifications to India's best</span>
+                </div>
+
+                <div class="col_one_third">
+                    <div class="feature-box fbox-border fbox-effect">
+                        <div class="fbox-icon">
+                            <a href="#"><i class="icon-thumbs-up"></i></a>
+                        </div>
+                        <h3>Responsive Layout</h3>
+                        <p>Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view.</p>
+                    </div>
+                </div>
+
+                <div class="col_one_third">
+                    <div class="feature-box fbox-border fbox-effect">
+                        <div class="fbox-icon">
+                            <a href="#"><i class="icon-ok"></i></a>
+                        </div>
+                        <h3>Retina Ready Graphics</h3>
+                        <p>Looks beautiful &amp; ultra-sharp on Retina Screen Displays. Retina Icons, Fonts &amp; all others graphics are optimized.</p>
+                    </div>
+                </div>
+
+                <div class="col_one_third col_last">
+                    <div class="feature-box fbox-border fbox-effect">
+                        <div class="fbox-icon">
+                            <a href="#"><i class="icon-share i-alt"></i></a>
+                        </div>
+                        <h3>Powerful Performance</h3>
+                        <p>Canvas includes tons of optimized code that are completely customizable and deliver unmatched fast performance.</p>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+
+            </div>
+
+
+            <div class="clearfix" style="background-color:#3b5998; ">
+                <div class="heading-block-white center nobottomborder topmargin-sm">
+                    <h1>Latest questions</h1>
+                </div>
+                <div id="recent-news"></div>
+            </div>
+            <div class="clear"></div>
+
+            <!--</div>-->
+            <!--<div class="section nobottommargin">-->
+
+            <div class="container clearfix">
+                <div class="heading-block center nobottomborder topmargin-lg">
+                    <h1>Top Advocates</h1>
+                </div>
+                <!-- Portfolio Filter
+                ============================================= -->
+                <div class="bmd-component">
+
+                    <ul id="advocatesFilter" class="nav nav-tabs bmd-nav-tabs bmd-nav-tabs-primary clearfix">
+
+                        <li class="activeFilter"><a href="#" data-filter="*">Show All</a></li>
+                        <li><a class="bmd-ripple" href="#" data-filter=".CivilLaw">Civil</a></li>
+                        <li><a class="bmd-ripple" href="#" data-filter=".CriminalLaw">Criminal</a></li>
+                        <li><a class="bmd-ripple" href="#" data-filter=".BusinessLaw">Business</a></li>
+                        <li><a class="bmd-ripple" href="#" data-filter=".FamilyLaw">Family</a></li>
+                        <li><a class="bmd-ripple" href="#" data-filter=".PropertyLaw">Property</a></li>
+
+                    </ul><!-- #portfolio-filter end -->
+
+                </div>
+
+                <div class="clear"></div>
+
+                <!-- Portfolio Items
+                ============================================= -->
+                <div class="x_content">
+                    <div id="advocates">
+<div id="loading" class="center">
+    <div class="bmd-spinner bmd-spinner-primary">
+        <svg viewBox="0 0 50 50">
+            <circle r="20" cy="25" cx="25">
+            </circle></svg>
+    </div>
+</div>
+
+                    </div><!-- #portfolio end -->
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="clear"></div>
+
+
+        <div class="modal fade consultation-modal" tabindex="-1" role="dialog"
+             aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div id="con">
+                        <div class="row  block divcenter col-lg-12 ">
+                            <div class="user-details">
+                                <input type="hidden" id="user-id-modal"/>
+                                <input type="hidden" id="user-email-modal"/>
+                                <input type="hidden" id="user-online-modal"/>
+                                <input type="hidden" id="user-email-category"/>
+                                <div class="panel-body center">
+                                    <div class="heading-block center nobottomborder bottommargin-lg">
+                                        <h1>Consult</h1>
+                                        <p>Here you can choose between video consultation and private messaging
+                                            (You can video consult only with online lawyers)</p>
+                                    </div>
+                                    <button type="submit" id="send-message-modal"
+                                            class="button button-3d button-blue bmd-ripple nomargin">Send Message
+                                        <i class="fa fa-comments" aria-hidden="true"></i>
+                                    </button>
+
+                                    <button type="submit" id="video-modal"
+                                            class="button button-3d button-blue bmd-ripple nomargin">Video Consult
+                                        <i class="fa fa-video-camera" aria-hidden="true"></i>                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </section><!-- #content end -->
+
+    <!-- Footer
+    ============================================= -->
+    <div th:include="wireframe :: footer"></div>
+
+</div><!-- #wrapper end -->
+
+<!-- Go To Top
+============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
+
+<!-- Footer Scripts
+============================================= -->
+<script th:src="@{/resources/js/modernizr.js} " src="/resources/js/modernizr.js"></script>
+<script th:src="@{/resources/js/main.js} " src="/resources/js/main.js"></script>
+<script th:src="@{/resources/js/prettify.js} " src="/resources/js/prettify.js"></script>
+<script th:src="@{/resources/js/material.js} " src="/resources/js/material.js"></script>
+<script th:src="@{/resources/js/sockjs.js} " src="/resources/js/sockjs.js"></script>
+<script th:src="@{/resources/js/stomp.orig.js} " src="/resources/js/stomp.orig.js"></script>
+<script th:src="@{/resources/js/jquery-confirm.js} " src="/resources/js/jquery-confirm.js"></script>
+<script th:src="@{/resources/js/page/home.js} " src="/resources/js/page/home.js"></script>
+<script th:src="@{/resources/js/functions.js} " src="/resources/js/functions.js"></script>
+
+</body>
+</html>
