@@ -23,4 +23,17 @@ public class UserDaoImpl implements UserDao {
                 .setFetchMode("role", FetchMode.JOIN)
                 .add(Restrictions.eq("email",email));
     }
+
+    @Override
+    public void addUser(User user) throws Exception {
+
+        System.out.println("Roles id"+user.getRoles().getRoleName());
+        sessionFactory.getCurrentSession().save(user);
+    }
+
+    @Override
+    public void updateUser(User user) throws Exception {
+        sessionFactory.getCurrentSession().update(user);
+
+    }
 }

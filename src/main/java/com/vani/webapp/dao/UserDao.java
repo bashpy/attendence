@@ -8,4 +8,6 @@ import com.vani.webapp.models.User;
 public interface UserDao {
 
     User getByEmail(String email)throws Exception;
+    void addUser(User user)throws Exception;
+    void updateUser(User user)throws Exception;
 }

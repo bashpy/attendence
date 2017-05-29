@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head th:fragment="header">
+      xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="header">
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="author" content="SemiColonWeb"/>
     <meta name="_csrf" th:content="${_csrf.token}"/>
     <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
-    <link th:href="@{/store/css/google.css}" href="../store/css/google.css" rel="stylesheet"/>
-    <link th:href="@{/common/css/bootstrap.css}" href="../common/css/bootstrap.css" rel="stylesheet"/>
-    <link th:href="@{/store/css/style.css}" href="../store/css/style.css" rel="stylesheet"/>
-    <link th:href="@{/store/css/animate.css}" href="../store/css/animate.css" rel="stylesheet"/>
-    <link th:href="@{/store/css/magnific-popup.css}" href="../store/css/magnific-popup.css" rel="stylesheet"/>
-    <link th:href="@{/store/css/font-icons.css}" href="../store/css/font-icons.css" rel="stylesheet"/>
-    <link th:href="@{/store/css/responsive.css}" href="../store/css/responsive.css" rel="stylesheet"/>
-    <link th:href="@{/common/css/material.css}" href="../common/css/material.css" rel="stylesheet"/>
-    <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/bootstrap.css}"  rel="stylesheet"/>
+    <link th:href="@{/css/sb-admin.css}"  rel="stylesheet"/>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -26,441 +18,173 @@
     <!-- External JavaScripts
     ============================================= -->
 
-    <script th:src="@{/common/js/jquery.js} " src="../common/js/jquery.js"></script>
-    <script th:src="@{/common/js/plugins.js} " src="../common/js/plugins.js"></script>
-    <script th:src="@{/common/js/prettify.js} " src="../common/js/prettify.js"></script>
-    <script th:src="@{/common/js/modernizr.js} " src="../common/js/modernizr.js"></script>
-    <script th:src="@{/common/js/material.js} " src="../common/js/material.js"></script>
+    <script th:src="@{/js/jquery.js} "></script>
+    <script th:src="@{/js/bootstrap.js} "></script>
+    <script th:src="@{/js/jquery.validate.js} "></script>
 
-</head>
+</div>
 
 
 <div th:fragment="topBody">
 
-
-
-        <!-- Top Bar
-        ============================================= -->
-        <div id="top-bar">
-
-            <div class="container clearfix">
-
-                <div class="col_half nobottommargin hidden-xs">
-
-                    <p class="nobottommargin"><strong>Call:</strong> 1800-547-2145 | <strong>Email:</strong> info@canvas.com</p>
-
-                </div>
-
-                <div class="col_half col_last fright nobottommargin">
-
-                    <!-- Top Links
-                    ============================================= -->
-                    <div class="top-links">
-                        <ul>
-                            <li><a href="#">USD</a>
-                                <ul>
-                                    <li><a href="#">EUR</a></li>
-                                    <li><a href="#">AUD</a></li>
-                                    <li><a href="#">GBP</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">EN</a>
-                                <ul>
-                                    <li><a href="#"><img src="images/icons/flags/french.png" alt="French"/> FR</a></li>
-                                    <li><a href="#"><img src="images/icons/flags/italian.png" alt="Italian"/> IT</a></li>
-                                    <li><a href="#"><img src="images/icons/flags/german.png" alt="German"/> DE</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Login</a>
-                                <div class="top-link-section">
-                                    <form id="top-login" role="form">
-                                        <div class="input-group" id="top-login-username">
-                                            <span class="input-group-addon"><i class="icon-user"></i></span>
-                                            <input type="email" class="form-control" placeholder="Email address" required=""/>
-                                        </div>
-                                        <div class="input-group" id="top-login-password">
-                                            <span class="input-group-addon"><i class="icon-key"></i></span>
-                                            <input type="password" class="form-control" placeholder="Password" required=""/>
-                                        </div>
-                                        <label class="checkbox">
-                                            <input type="checkbox" value="remember-me"/> Remember me
-                                        </label>
-                                        <button class="btn btn-danger btn-block" type="submit">Sign in</button>
-                                    </form>
-                                </div>
-                            </li>
-                        </ul>
-                    </div><!-- .top-links end -->
-
-                </div>
-
-            </div>
-
-        </div><!-- #top-bar end -->
-
-        <!-- Header
-        ============================================= -->
-        <header id="header" class="sticky-style-2">
-
-            <div class="container clearfix">
-
-                <!-- Logo
-                ============================================= -->
-                <div id="logo">
-                    <a href="index.html" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo.png" alt="Canvas Logo"/></a>
-                    <a href="index.html" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt="Canvas Logo"/></a>
-                </div><!-- #logo end -->
-
-                <ul class="header-extras">
-                    <li>
-                        <i class="i-medium i-circled i-bordered icon-thumbs-up2 nomargin"></i>
-                        <div class="he-text">
-                            Original Brands
-                            <span>100% Guaranteed</span>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="i-medium i-circled i-bordered icon-truck2 nomargin"></i>
-                        <div class="he-text">
-                            Free Shipping
-                            <span>for $20 or more</span>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="i-medium i-circled i-bordered icon-undo nomargin"></i>
-                        <div class="he-text">
-                            30-Day Returns
-                            <span>Completely Free</span>
-                        </div>
-                    </li>
-                </ul>
-
-            </div>
-
-            <div id="header-wrap">
-
-                <!-- Primary Navigation
-                ============================================= -->
-                <nav id="primary-menu" class="style-2">
-
-                    <div class="container clearfix">
-
-                        <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
-
-                        <ul>
-                            <li class="current"><a href="#"><div>Home</div><span>Lets Start</span></a>
-                                <ul>
-                                    <li><a href="index-corporate.html"><div>Home - Corporate</div></a>
-                                        <ul>
-                                            <li><a href="index-corporate.html"><div>Corporate - Layout 1</div></a></li>
-                                            <li><a href="index-corporate-2.html"><div>Corporate - Layout 2</div></a></li>
-                                            <li><a href="index-corporate-3.html"><div>Corporate - Layout 3</div></a></li>
-                                            <li><a href="index-corporate-4.html"><div>Corporate - Layout 4</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="index-portfolio.html"><div>Home - Portfolio</div></a>
-                                        <ul>
-                                            <li><a href="index-portfolio.html"><div>Portfolio - Layout 1</div></a></li>
-                                            <li><a href="index-portfolio-2.html"><div>Portfolio - Layout 2</div></a></li>
-                                            <li><a href="index-portfolio-3.html"><div>Portfolio - Masonry</div></a></li>
-                                            <li><a href="index-portfolio-4.html"><div>Portfolio - AJAX</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="index-blog.html"><div>Home - Blog</div></a>
-                                        <ul>
-                                            <li><a href="index-blog.html"><div>Blog - Layout 1</div></a></li>
-                                            <li><a href="index-blog-2.html"><div>Blog - Layout 2</div></a></li>
-                                            <li><a href="index-blog-3.html"><div>Blog - Layout 3</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="index-shop.html"><div>Home - Shop</div></a>
-                                        <ul>
-                                            <li><a href="index-shop.html"><div>Shop - Layout 1</div></a></li>
-                                            <li><a href="index-shop-2.html"><div>Shop - Layout 2</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="index-magazine.html"><div>Home - Magazine</div></a>
-                                        <ul>
-                                            <li><a href="index-magazine.html"><div>Magazine - Layout 1</div></a></li>
-                                            <li><a href="index-magazine-2.html"><div>Magazine - Layout 2</div></a></li>
-                                            <li><a href="index-magazine-3.html"><div>Magazine - Layout 3</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="landing.html"><div>Home - Landing Page</div></a>
-                                        <ul>
-                                            <li><a href="landing.html"><div>Landing Page - Layout 1</div></a></li>
-                                            <li><a href="landing-2.html"><div>Landing Page - Layout 2</div></a></li>
-                                            <li><a href="landing-3.html"><div>Landing Page - Layout 3</div></a></li>
-                                            <li><a href="landing-4.html"><div>Landing Page - Layout 4</div></a></li>
-                                            <li><a href="landing-5.html"><div>Landing Page - Layout 5</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="index-fullscreen-image.html"><div>Home - Full Screen</div></a>
-                                        <ul>
-                                            <li><a href="index-fullscreen-image.html"><div>Full Screen - Image</div></a></li>
-                                            <li><a href="index-fullscreen-slider.html"><div>Full Screen - Slider</div></a></li>
-                                            <li><a href="index-fullscreen-video.html"><div>Full Screen - Video</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="index-onepage.html"><div>Home - One Page</div></a>
-                                        <ul>
-                                            <li><a href="index-onepage.html"><div>One Page - Default</div></a></li>
-                                            <li><a href="index-onepage-2.html"><div>One Page - Submenu</div></a></li>
-                                            <li><a href="index-onepage-3.html"><div>One Page - Dots Style</div></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="index-wedding.html"><div>Home - Wedding</div></a></li>
-                                    <li><a href="index-restaurant.html"><div>Home - Restaurant</div></a></li>
-                                    <li><a href="index-events.html"><div>Home - Events</div></a></li>
-                                    <li><a href="index-parallax.html"><div>Home - Parallax</div></a></li>
-                                    <li><a href="index-app-showcase.html"><div>Home - App Showcase</div></a></li>
-                                </ul>
-                            </li>
-                            <!-- Mega Menu
-                            ============================================= -->
-                            <li class="mega-menu"><a href="#"><div>Men</div><span>Out of the Box</span></a>
-                                <div class="mega-menu-content style-2 col-4 clearfix">
-                                    <ul>
-                                        <li class="mega-menu-title"><a href="#"><div>Footwear</div></a>
-                                            <ul>
-                                                <li><a href="#"><div>Casual Shoes</div></a></li>
-                                                <li><a href="#"><div>Formal Shoes</div></a></li>
-                                                <li><a href="#"><div>Sports shoes</div></a></li>
-                                                <li><a href="#"><div>Flip Flops</div></a></li>
-                                                <li><a href="#"><div>Slippers</div></a></li>
-                                                <li><a href="#"><div>Sports Sandals</div></a></li>
-                                                <li><a href="#"><div>Party Shoes</div></a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <ul>
-                                        <li class="mega-menu-title"><a href="#"><div>Clothing</div></a>
-                                            <ul>
-                                                <li><a href="#"><div>Casual Shirts</div></a></li>
-                                                <li><a href="#"><div>T-Shirts</div></a></li>
-                                                <li><a href="#"><div>Collared Tees</div></a></li>
-                                                <li><a href="#"><div>Pants / Trousers</div></a></li>
-                                                <li><a href="#"><div>Ethnic Wear</div></a></li>
-                                                <li><a href="#"><div>Jeans</div></a></li>
-                                                <li><a href="#"><div>Sweamwear</div></a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <ul>
-                                        <li class="mega-menu-title"><a href="#"><div>Accessories</div></a>
-                                            <ul>
-                                                <li><a href="#"><div>Bags &amp; Backpacks</div></a></li>
-                                                <li><a href="#"><div>Watches</div></a></li>
-                                                <li><a href="#"><div>Sunglasses</div></a></li>
-                                                <li><a href="#"><div>Wallets</div></a></li>
-                                                <li><a href="#"><div>Caps &amp; Hats</div></a></li>
-                                                <li><a href="#"><div>Jewellery</div></a></li>
-                                                <li><a href="#"><div>Belts, Ties</div></a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <ul>
-                                        <li class="mega-menu-title"><a href="#"><div>New Arrivals</div></a>
-                                            <ul>
-                                                <li><a href="#"><div>T-Shirts</div></a></li>
-                                                <li><a href="#"><div>Formal Shoes</div></a></li>
-                                                <li><a href="#"><div>Accessories</div></a></li>
-                                                <li><a href="#"><div>Watches</div></a></li>
-                                                <li><a href="#"><div>Perfumes</div></a></li>
-                                                <li><a href="#"><div>Belts, Ties</div></a></li>
-                                                <li><a href="#"><div>Formal Shirts</div></a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li><!-- .mega-menu end -->
-                            <li><a href="#"><div>Women</div><span>Out of the Box</span></a>
-                                <div class="mega-menu-content style-2 col-2 clearfix">
-                                    <ul>
-                                        <li class="mega-menu-title"><a href="#"><div>Footwear</div></a>
-                                            <ul>
-                                                <li><a href="#"><div>Casual Shoes</div></a></li>
-                                                <li><a href="#"><div>Formal Shoes</div></a></li>
-                                                <li><a href="#"><div>Sports shoes</div></a></li>
-                                                <li><a href="#"><div>Flip Flops</div></a></li>
-                                                <li><a href="#"><div>Slippers</div></a></li>
-                                                <li><a href="#"><div>Sports Sandals</div></a></li>
-                                                <li><a href="#"><div>Party Shoes</div></a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <ul>
-                                        <li class="mega-menu-title"><a href="#"><div>Clothing</div></a>
-                                            <ul>
-                                                <li><a href="#"><div>Casual Shirts</div></a></li>
-                                                <li><a href="#"><div>T-Shirts</div></a></li>
-                                                <li><a href="#"><div>Collared Tees</div></a></li>
-                                                <li><a href="#"><div>Pants / Trousers</div></a></li>
-                                                <li><a href="#"><div>Ethnic Wear</div></a></li>
-                                                <li><a href="#"><div>Jeans</div></a></li>
-                                                <li><a href="#"><div>Sweamwear</div></a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li><!-- .mega-menu end -->
-                            <li><a href="#"><div>Accessories</div><span>Awesome Works</span></a></li>
-                            <li><a href="#"><div>Sale</div><span>Awesome Works</span></a></li>
-                            <li><a href="#"><div>Blog</div><span>Latest News</span></a></li>
-                            <li><a href="#"><div>Videos</div><span>Latest News</span></a></li>
-                            <li><a href="#"><div>Contact</div><span>Get In Touch</span></a></li>
-                        </ul>
-
-                        <!-- Top Cart
-                        ============================================= -->
-                        <div id="top-cart">
-                            <a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span>5</span></a>
-                            <div class="top-cart-content">
-                                <div class="top-cart-title">
-                                    <h4>Shopping Cart</h4>
-                                </div>
-                                <div class="top-cart-items">
-                                    <div class="top-cart-item clearfix">
-                                        <div class="top-cart-item-image">
-                                            <a href="#"><img src="images/shop/small/1.jpg" alt="Blue Round-Neck Tshirt" /></a>
-                                        </div>
-                                        <div class="top-cart-item-desc">
-                                            <a href="#">Blue Round-Neck Tshirt</a>
-                                            <span class="top-cart-item-price">$19.99</span>
-                                            <span class="top-cart-item-quantity">x 2</span>
-                                        </div>
-                                    </div>
-                                    <div class="top-cart-item clearfix">
-                                        <div class="top-cart-item-image">
-                                            <a href="#"><img src="images/shop/small/6.jpg" alt="Light Blue Denim Dress" /></a>
-                                        </div>
-                                        <div class="top-cart-item-desc">
-                                            <a href="#">Light Blue Denim Dress</a>
-                                            <span class="top-cart-item-price">$24.99</span>
-                                            <span class="top-cart-item-quantity">x 3</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="top-cart-action clearfix">
-                                    <span class="fleft top-checkout-price">$114.95</span>
-                                    <button class="button button-3d button-small nomargin fright">View Cart</button>
+    <nav class="navbar navbar-inverse navbar-fixed-top" roles="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">SB Admin</a>
+        </div>
+        <!-- Top Menu Items -->
+        <ul class="nav navbar-right top-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                <ul class="dropdown-menu message-dropdown">
+                    <li class="message-preview">
+                        <a href="#">
+                            <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                <div class="media-body">
+                                    <h5 class="media-heading"><strong>John Smith</strong>
+                                    </h5>
+                                    <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur...</p>
                                 </div>
                             </div>
-                        </div><!-- #top-cart end -->
+                        </a>
+                    </li>
+                    <li class="message-preview">
+                        <a href="#">
+                            <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                <div class="media-body">
+                                    <h5 class="media-heading"><strong>John Smith</strong>
+                                    </h5>
+                                    <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="message-preview">
+                        <a href="#">
+                            <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                <div class="media-body">
+                                    <h5 class="media-heading"><strong>John Smith</strong>
+                                    </h5>
+                                    <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="message-footer">
+                        <a href="#">Read All New Messages</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                <ul class="dropdown-menu alert-dropdown">
+                    <li>
+                        <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                    </li>
+                    <li>
+                        <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                    </li>
+                    <li>
+                        <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                    </li>
+                    <li>
+                        <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+                    </li>
+                    <li>
+                        <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+                    </li>
+                    <li>
+                        <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">View All</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li>
+                    <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                </li>
+                <li>
+                    <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                </li>
+                <li class="active">
+                    <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                </li>
+                <li>
+                    <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                </li>
+                <li>
+                    <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                </li>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="demo" class="collapse">
+                        <li>
+                            <a href="#">Dropdown Item</a>
+                        </li>
+                        <li>
+                            <a href="#">Dropdown Item</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                </li>
+                <li>
+                    <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
 
-                        <!-- Top Search
-                        ============================================= -->
-                        <div id="top-search">
-                            <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
-                            <form action="search.html" method="get">
-                                <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter.."/>
-                            </form>
-                        </div><!-- #top-search end -->
-
-                    </div>
-
-                </nav><!-- #primary-menu end -->
-
-            </div>
-
-        </header><!-- #header end -->
-
-
-    </div>
+</div>
 <div th:fragment="footer">
-    <footer id="footer" class="dark">
 
-        <div class="container">
-
-            <!-- Footer Widgets
-            ============================================= -->
-            <div class="footer-widgets-wrap clearfix">
-
-                <div class="col-lg-4">
-
-                    <div class="widget clearfix">
-
-
-                        <div style="background: url('images/world-map.png') no-repeat center center; background-size: 100%;">
-                            <address>
-                                <strong>Office:</strong>
-                                #DS4,
-                                Heavenly Plaza,
-                                Vazhakkala, Kakkanad,
-                                Ernakulam, Kerala
-                                682021
-                            </address>
-                            <abbr title="Phone Number"><strong>Phone:</strong></abbr> 0484 403 7550
-                            <abbr title="Email Address"><strong>Email:</strong></abbr> info@askavakil.in
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-lg-4">
-
-                    <div class="widget widget_links clearfix">
-
-
-                        <ul>
-                            <li><a href="http://codex.wordpress.org/">Documentation</a></li>
-                            <li><a href="http://wordpress.org/extend/themes/">FAQ</a></li>
-                        </ul>
-
-                    </div>
-
-                </div>
-
-                <div class="col-lg-4">
-                    <p> Ask a vakil is an online platform for clearing your leagal hassles from
-                    India's top lawyers</p>
-                </div>
-
-            </div>
-
-        </div><!-- .footer-widgets-wrap end -->
-
-        <!-- Copyrights
-        ============================================= -->
-        <div id="copyrights">
-
-            <div class="container clearfix">
-
-                <div class="col_half">
-                    Copyrights &copy; 2016 All Rights Reserved by Sciwiz technologies.
-                    <div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
-                </div>
-
-                <div class="col_half col_last tright">
-                    <div class="fright clearfix">
-                        <a href="#" class="social-icon si-small si-borderless si-facebook">
-                            <i class="icon-facebook"></i>
-                            <i class="icon-facebook"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-small si-borderless si-twitter">
-                            <i class="icon-twitter"></i>
-                            <i class="icon-twitter"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-small si-borderless si-gplus">
-                            <i class="icon-gplus"></i>
-                            <i class="icon-gplus"></i>
-                        </a>
-
-                    </div>
-
-                    <div class="clear"></div>
-
-
-                </div>
-
-            </div>
-
-        </div><!-- #copyrights end -->
-
-    </footer><!-- #footer end -->
 
 </div>
 </html>

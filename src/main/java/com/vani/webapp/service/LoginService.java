@@ -1,7 +1,7 @@
 package com.vani.webapp.service;
 
 
-import com.vani.webapp.models.Role;
+import com.vani.webapp.models.Roles;
 import com.vani.webapp.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -33,8 +33,8 @@ public class LoginService implements UserDetailsService {
             User user = userService.getByEmail(s);
             if (user != null) {
 
-                Role role = user.getRole();
-                grantedAuthorities.add(new SimpleGrantedAuthority(role.getRoleName()));
+                Roles roles = user.getRoles();
+                grantedAuthorities.add(new SimpleGrantedAuthority(roles.getRoleName()));
 
             }
 
