@@ -26,6 +26,8 @@ public class AttendanceApplication {
 		return messageConverter;
 
 	}
+
+
 	public static void main(String[] args) {
 		SpringApplication.run(AttendanceApplication.class, args);
 	}

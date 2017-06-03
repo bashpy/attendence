@@ -1,5 +1,5 @@
 package com.vani.webapp.models;
-// Generated 29 May, 2017 12:02:51 AM by Hibernate Tools 5.2.3.Final
+// Generated 2 Jun, 2017 4:27:33 PM by Hibernate Tools 5.0.6.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,7 +25,7 @@ import javax.persistence.Version;
 @Table(name = "division", catalog = "attendance")
 public class Division implements java.io.Serializable {
 
-	private int id;
+	private Integer id;
 	private Integer version;
 	private SchoolClass schoolClass;
 	private User user;
@@ -34,17 +36,14 @@ public class Division implements java.io.Serializable {
 	public Division() {
 	}
 
-	public Division(int id, SchoolClass schoolClass, User user, String division, Date createdTimeStamp) {
-		this.id = id;
+	public Division(SchoolClass schoolClass, User user, String division, Date createdTimeStamp) {
 		this.schoolClass = schoolClass;
 		this.user = user;
 		this.division = division;
 		this.createdTimeStamp = createdTimeStamp;
 	}
 
-	public Division(int id, SchoolClass schoolClass, User user, String division, Date createdTimeStamp,
-			Set<Student> students) {
-		this.id = id;
+	public Division(SchoolClass schoolClass, User user, String division, Date createdTimeStamp, Set<Student> students) {
 		this.schoolClass = schoolClass;
 		this.user = user;
 		this.division = division;
@@ -53,13 +52,14 @@ public class Division implements java.io.Serializable {
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "id", unique = true, nullable = false)
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

@@ -55,7 +55,7 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
             try {
                 if (NotEmpty.notEmpty(getCurrentUserDetails.getDetails())) {
 
-                    if(new String("Administrator").equals(getCurrentUserDetails.getDetails().getRoles().getRoleName()))
+                    if(new String("Administrator").equals(getCurrentUserDetails.getDetails().getRole().getRoleName()))
 
                         getRedirectStrategy().sendRedirect(request, response, ADMIN_HOME_PAGE);
                     else

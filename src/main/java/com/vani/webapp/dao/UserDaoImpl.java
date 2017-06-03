@@ -6,11 +6,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by hexad3cimal on 14/5/17.
  */
 
+@Transactional
 @Repository("UserDao")
 public class UserDaoImpl implements UserDao {
 
@@ -27,7 +29,6 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void addUser(User user) throws Exception {
 
-        System.out.println("Roles id"+user.getRoles().getRoleName());
         sessionFactory.getCurrentSession().save(user);
     }
 

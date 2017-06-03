@@ -1,5 +1,5 @@
 package com.vani.webapp.models;
-// Generated 29 May, 2017 12:02:51 AM by Hibernate Tools 5.2.3.Final
+// Generated 2 Jun, 2017 4:27:33 PM by Hibernate Tools 5.0.6.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,7 +25,7 @@ import javax.persistence.Version;
 @Table(name = "school_class", catalog = "attendance")
 public class SchoolClass implements java.io.Serializable {
 
-	private int id;
+	private Integer id;
 	private Integer version;
 	private School school;
 	private String className;
@@ -33,15 +35,13 @@ public class SchoolClass implements java.io.Serializable {
 	public SchoolClass() {
 	}
 
-	public SchoolClass(int id, School school, String className, Date createdTimeStamp) {
-		this.id = id;
+	public SchoolClass(School school, String className, Date createdTimeStamp) {
 		this.school = school;
 		this.className = className;
 		this.createdTimeStamp = createdTimeStamp;
 	}
 
-	public SchoolClass(int id, School school, String className, Date createdTimeStamp, Set<Division> divisions) {
-		this.id = id;
+	public SchoolClass(School school, String className, Date createdTimeStamp, Set<Division> divisions) {
 		this.school = school;
 		this.className = className;
 		this.createdTimeStamp = createdTimeStamp;
@@ -49,13 +49,14 @@ public class SchoolClass implements java.io.Serializable {
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "id", unique = true, nullable = false)
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

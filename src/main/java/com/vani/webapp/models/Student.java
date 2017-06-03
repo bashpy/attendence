@@ -1,13 +1,18 @@
 package com.vani.webapp.models;
-// Generated 29 May, 2017 12:02:51 AM by Hibernate Tools 5.2.3.Final
+// Generated 2 Jun, 2017 4:27:33 PM by Hibernate Tools 5.0.6.Final
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,42 +25,46 @@ import javax.persistence.Version;
 @Table(name = "student", catalog = "attendance")
 public class Student implements java.io.Serializable {
 
-	private int id;
+	private Integer id;
 	private Integer version;
 	private Division division;
+	private Role role;
 	private User user;
 	private String studentName;
 	private int presentOrNot;
 	private Date createdTimeStamp;
+	private Set<Attendance> attendances = new HashSet<Attendance>(0);
 
 	public Student() {
 	}
 
-	public Student(int id, Division division, User user, String studentName, int presentOrNot) {
-		this.id = id;
+	public Student(Division division, User user, String studentName, int presentOrNot) {
 		this.division = division;
 		this.user = user;
 		this.studentName = studentName;
 		this.presentOrNot = presentOrNot;
 	}
 
-	public Student(int id, Division division, User user, String studentName, int presentOrNot, Date createdTimeStamp) {
-		this.id = id;
+	public Student(Division division, Role role, User user, String studentName, int presentOrNot, Date createdTimeStamp,
+			Set<Attendance> attendances) {
 		this.division = division;
+		this.role = role;
 		this.user = user;
 		this.studentName = studentName;
 		this.presentOrNot = presentOrNot;
 		this.createdTimeStamp = createdTimeStamp;
+		this.attendances = attendances;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "id", unique = true, nullable = false)
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -77,6 +86,16 @@ public class Student implements java.io.Serializable {
 
 	public void setDivision(Division division) {
 		this.division = division;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "role_id")
+	public Role getRole() {
+		return this.role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -115,6 +134,15 @@ public class Student implements java.io.Serializable {
 
 	public void setCreatedTimeStamp(Date createdTimeStamp) {
 		this.createdTimeStamp = createdTimeStamp;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+	public Set<Attendance> getAttendances() {
+		return this.attendances;
+	}
+
+	public void setAttendances(Set<Attendance> attendances) {
+		this.attendances = attendances;
 	}
 
 }

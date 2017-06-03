@@ -1,7 +1,7 @@
 package com.vani.webapp.controllers;
 
 import com.vani.webapp.dto.UserDTO;
-import com.vani.webapp.models.Roles;
+import com.vani.webapp.models.Role;
 import com.vani.webapp.models.User;
 import com.vani.webapp.service.RoleService;
 import com.vani.webapp.service.UserService;
@@ -44,7 +44,6 @@ public class UserController {
 
         if(result.hasErrors())
         {
-            System.out.println("Error >>"+result.getAllErrors().get(0).toString());
             return new ResponseEntity<Object>("error",HttpStatus.BAD_REQUEST);
         }
         User userObject = new User();
@@ -55,8 +54,8 @@ public class UserController {
         userObject.setPhoneNumber(user.getPhoneNo());
         userObject.setEmail(user.getEmail());
 
-        Roles roles = roleService.getById(user.getRole());
-        userObject.setRoles(roles);
+        Role roles = roleService.getById(user.getRole());
+        userObject.setRole(roles);
 
         if(user.getId() != 0)
         {

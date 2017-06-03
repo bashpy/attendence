@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Created by hexad3cimal on 14/5/17.
  */
-@Transactional
 @Service("UserService")
 public class UserServiceImpl implements UserService {
 

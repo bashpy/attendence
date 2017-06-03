@@ -1,6 +1,6 @@
 package com.vani.webapp.service;
 
-import com.vani.webapp.models.Roles;
+import com.vani.webapp.models.Role;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface RoleService {
 
-    void addRole(Roles roles)throws Exception;
-    List<Roles> rolesList() throws Exception;
-    Roles getById(Integer roleId)throws Exception;
+    void addRole(Role roles)throws Exception;
+    List<Role> rolesList() throws Exception;
+    Role getById(Integer roleId)throws Exception;
 }

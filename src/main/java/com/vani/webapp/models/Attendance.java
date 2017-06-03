@@ -1,10 +1,15 @@
 package com.vani.webapp.models;
-// Generated 29 May, 2017 12:02:51 AM by Hibernate Tools 5.2.3.Final
+// Generated 2 Jun, 2017 4:27:33 PM by Hibernate Tools 5.0.6.Final
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,30 +22,30 @@ import javax.persistence.Version;
 @Table(name = "attendance", catalog = "attendance")
 public class Attendance implements java.io.Serializable {
 
-	private int id;
+	private Integer id;
 	private Integer version;
+	private Student student;
 	private Date date;
-	private int studentId;
 	private Date createdTimeStamp;
 
 	public Attendance() {
 	}
 
-	public Attendance(int id, Date date, int studentId, Date createdTimeStamp) {
-		this.id = id;
+	public Attendance(Student student, Date date, Date createdTimeStamp) {
+		this.student = student;
 		this.date = date;
-		this.studentId = studentId;
 		this.createdTimeStamp = createdTimeStamp;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "id", unique = true, nullable = false)
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -54,6 +59,16 @@ public class Attendance implements java.io.Serializable {
 		this.version = version;
 	}
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "student_id", nullable = false)
+	public Student getStudent() {
+		return this.student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date", nullable = false, length = 10)
 	public Date getDate() {
@@ -62,15 +77,6 @@ public class Attendance implements java.io.Serializable {
 
 	public void setDate(Date date) {
 		this.date = date;
-	}
-
-	@Column(name = "student_id", nullable = false)
-	public int getStudentId() {
-		return this.studentId;
-	}
-
-	public void setStudentId(int studentId) {
-		this.studentId = studentId;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

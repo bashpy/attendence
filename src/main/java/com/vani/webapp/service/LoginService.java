@@ -1,7 +1,7 @@
 package com.vani.webapp.service;
 
 
-import com.vani.webapp.models.Roles;
+import com.vani.webapp.models.Role;
 import com.vani.webapp.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,7 +22,7 @@ import java.util.List;
 public class LoginService implements UserDetailsService {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
@@ -33,7 +33,7 @@ public class LoginService implements UserDetailsService {
             User user = userService.getByEmail(s);
             if (user != null) {
 
-                Roles roles = user.getRoles();
+                Role roles = user.getRole();
                 grantedAuthorities.add(new SimpleGrantedAuthority(roles.getRoleName()));
 
             }
